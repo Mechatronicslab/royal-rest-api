@@ -1,0 +1,19 @@
+{
+   "name" : "adi permana",
+   "email" : "adi.permana60@ymail.com",
+   "password" : "090117",
+   "secret" : "SVA",
+
+    "database": {
+        "development": {
+            "uri": "mongodb://adi:adi@167.205.7.227:27017/SVA"
+        },
+        "production": {
+            "uri": "mongodb://localhost:27017/Royal"
+        }
+
+    }
+
+
+
+}
