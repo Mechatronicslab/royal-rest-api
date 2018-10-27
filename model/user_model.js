@@ -10,6 +10,7 @@ const userSchema = mongoose.Schema({
 	city : String,
 	city_code : String,
 	address : String,
+	level : String,
 	hashed_password	: String,
 	created_at		: {type: String, default: moment().format()},
 	temp_password	: String,
