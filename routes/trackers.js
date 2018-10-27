@@ -4,7 +4,7 @@ const requestResponse = setup.requestResponse
 const multer = require('multer');
 const mongoose = require('mongoose');
 module.exports = router => {
-  router.post('/create_tracker',(req, res) => {
+  router.post('/tracker/create',(req, res) => {
       const email = req.body.email;
       const distance = req.body.distance;
       const speed = req.body.speed ;

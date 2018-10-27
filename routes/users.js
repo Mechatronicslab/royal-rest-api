@@ -33,10 +33,13 @@ module.exports = router => {
 												var _tok = {access_token : token}
 												var name = {name : result.name}
 												var email = {email : result.email}
+												var phone_number = {phone_number : result.phone_number}
+												var city = {city : result.city}
+												var city_code = {city_code : result.city_code}
+												var address = {address : result.address}
 												var created= {created_at : result.created_at}
-												var data = Object.assign({},name,email,created,_tok)
-												let msg = Object.assign(requestResponse.common_success)
-
+												var data = Object.assign(name,email,phone_number,city,city_code,address,created,_tok)
+												var msg = Object.assign(requestResponse.common_signin_success)
 												msg['result']= data
 												//res.json(Object.assign(requestResponse.common_success,{result:data}))
 												res.json(msg)
@@ -56,13 +59,16 @@ module.exports = router => {
 		const email = req.body.email;
 		const phone_number = req.body.phone_number;
 		const password = req.body.password;
+		const city = req.body.city;
+		const city_code = req.body.city_code;
+		const address = req.body.address;
 
-		if (!name || !email || !phone_number || !password || !name.trim() || !email.trim() || !phone_number.trim() || !password.trim()) {
+		if (!name || !email || !phone_number ||!city || !city_code || !address || !password || !name.trim() || !email.trim() || !phone_number.trim() || !city.trim() || !city_code.trim() || !address.trim() || !password.trim()) {
 
 			res.status(400).json({message: 'Invalid Request !'});
 
 		} else {
-			userController.registerUser(name, email,phone_number, password)
+			userController.registerUser(name,email,phone_number,city,city_code,address, password)
 			.then(result => {
 				//res.setHeader('Location', '/users/'+email);
 				res.json(result)

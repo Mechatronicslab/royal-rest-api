@@ -1,4 +1,4 @@
-const posting = require('../model/tracker_model');
+const tracker = require('../model/tracker_model');
 const setup = require('../setup')
 const requestResponse = setup.requestResponse
 //const multer = require('multer');
@@ -7,8 +7,7 @@ const ObjectId = mongoose.Types.ObjectId;
 
 exports.create_tracker = (email,distance,speed) =>
 	new Promise((resolve,reject) => {
-    var distances = {type:"double"}
-				const newTracker = new posting({
+				const newTracker = new tracker({
 					email: email,
           distance:distance,
 					speed:speed,

@@ -30,6 +30,11 @@ function dbConnect() {
 }
 
 const requestResponse = {
+    common_signin_success: {
+        success: true,
+        rc: '0000',
+        rm: 'Berhasil memuat permintaan'
+    },
     common_success: {
         success: true,
         rc: '0000',

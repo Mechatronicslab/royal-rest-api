@@ -25,7 +25,7 @@ exports.loginUser = (email, password) =>
 		}).catch(err => reject(requestResponse.common_error));
 	});
 
-exports.registerUser = (name,email,phone_number, password) =>
+exports.registerUser = (name,email,phone_number,city,city_code,address ,password) =>
 	new Promise((resolve,reject) => {
     const salt = bcrypt.genSaltSync(10);
 		const hash = bcrypt.hashSync(password, salt);
@@ -38,6 +38,9 @@ exports.registerUser = (name,email,phone_number, password) =>
 					name: name,
 					email: email,
 					phone_number:phone_number,
+					city:city,
+					city_code:city_code,
+					address:address,
 					hashed_password: hash
 				});
 				newUser.save()
@@ -57,7 +60,7 @@ exports.registerUser = (name,email,phone_number, password) =>
 
 exports.getProfile = email =>
   	new Promise((resolve,reject) => {
-  		user.find({ email: email }, { name: 1, email: 1, created_at: 1, _id: 0 })
+  		user.find({ email: email})
   		.then(users => resolve(users[0]))
   		.catch(err => reject({ status: 500, message: 'Internal Server Error !' }))
 	});
