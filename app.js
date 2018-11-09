@@ -47,4 +47,3 @@ async function onListening() {
     }, 5000);
   }
 }
-module.exports = app;

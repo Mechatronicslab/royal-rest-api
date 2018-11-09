@@ -1,23 +1,46 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
-var uniqueValidator = require('mongoose-unique-validator');
 const userSchema = mongoose.Schema({
 
 	name 			: String,
+	nik : String ,
+	gender : String ,
+	tmpt_lahir : String ,
+	tgl_lahir : String ,
+	address : String,
+	phone_number1 : {type: String, unique: true, index: true},
+	phone_number2 : {type: String, unique: true, index: true},
 	email			: {type: String, unique: true, index: true},
-	phone_number : {type: String, unique: true, index: true},
 	city : String,
 	city_code : String,
-	address : String,
-	level : String,
-	token : String,
-	user_photo : [{image_user:String ,ktp : String , KK : String , Ijasah : String}],
-	vehicle : [{image_kendaraan : String,merk_kendaraan:String , jns_kendaraan : String ,no_plat:String ,_id : false}],
+	user_file : [
+								{
+									user_photo: String ,
+									ktp_photo: String ,
+									kk_photo : String ,
+									ijasah_photo : String
+								}
+							],
+
+	vehicle : [
+								{
+									image_kendaraan : String,
+									merk_kendaraan:String ,
+									jns_kendaraan : String ,
+									thn_kendaraan :String ,
+									no_plat:String
+								}
+							],
+	data_area : [
+								{
+									area_prioritas : String ,
+									area_sekunder : String
+								}
+							],
+  data_referensi : String,
 	hashed_password	: String,
-	referensi : String ,
-	created_at		: String,
-	temp_password	: String,
-	temp_password_time: String
+	token : String,
+	created_at		: String
 
 });
 //mongoose.Promise = global.Promise;

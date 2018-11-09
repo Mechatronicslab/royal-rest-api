@@ -70,18 +70,35 @@ module.exports = router => {
 		}
 	});
 
-	router.post('/users/signup',upload.single('image'),(req, res) => {
+	var upload_ = upload.fields([{name: 'user_photo', maxCount: 1},{name: 'ktp_photo', maxCount: 1}])
+	router.post('/users/signup',upload_,(req, res) => {
+		const name = req.body.name
+		const nik = req.body.nik
+		const gender = req.body.gender
+		const tmpt_lahir = req.body.tmpt_lahir
+		const tgl_lahir = req.body.tgl_lahir
+		const address = req.body.address
+		const phone_number1 = req.body.phone_number1
+		const phone_number2 = req.body.phone_number2
+		const email = req.body.email
+		const city = req.body.city
+		const city_code = req.body.city_code
+		const user_photo = req.files['user_photo'][0].filename
+		const ktp_photo = req.files['ktp_photo'][0].filename
+		const kk_photo = req.files['kk_photo'][0].filename
+		const ijasah_photo = req.files['ijasah_photo'][0].filename
+		const kendaraan_photo = req.files['kendaraan_photo'][0].filename
+		const merk_kendaraan = req.body.merk_kendaraan
+		const jns_kendaraan = req.body.jns_kendaraan
+		const thn_kendaraan = req.body.thn_kendaraan
+		const no_plat = req.body.no_plat
+		const area_prioritas = req.body.area_prioritas
+		const area_sekunder = req.body.area_sekunder
+		const data_referensi = req.body.data_referensi
+		const password = req.body.password
 
-		const name = req.body.name;
-		const email = req.body.email;
-		const phone_number = req.body.phone_number;
-		const password = req.body.password;
-		const city = req.body.city;
-		const city_code = req.body.city_code;
-		const address = req.body.address;
-		const image = req.file.filename;
-		const no_plat = req.body.no_plat;
-		const level = req.headers['level'];
+		console.log(user_photo)
+		console.log(ktp_photo)
 
 		if (!name || !email || !phone_number ||!city || !city_code || !address ||!password ||
 				!name.trim() || !email.trim() || !phone_number.trim() || !city.trim() || !city_code.trim() || !address.trim() || !password.trim()) {
@@ -89,7 +106,7 @@ module.exports = router => {
 			res.status(400).json({message: 'Invalid Request !'});
 
 		} else {
-			userController.registerUser(name,email,phone_number,city,city_code,address,password,no_plat,image)
+			userController.registerUser(name,email,phone_number,city,city_code,address,password,no_plat,image,user_photo,ktp_photo)
 			.then(result => {
 				//res.setHeader('Location', '/users/'+email);
 				res.json(result)

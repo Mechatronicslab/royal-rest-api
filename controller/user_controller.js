@@ -23,7 +23,7 @@ const { requestResponse } = require('../setup')
 			}).catch(err => reject(requestResponse.common_error));
 		});
 
-	exports.registerUser = (name,email,phone_number,city,city_code,address,password,no_plat,image) =>
+	exports.registerUser = (name,email,phone_number,city,city_code,address,password,no_plat,image,user_photo,ktp_photo) =>
 		new Promise((resolve,reject) => {
 	    const salt = bcrypt.genSaltSync(10);
 			const hash = bcrypt.hashSync(password, salt);
@@ -45,7 +45,8 @@ const { requestResponse } = require('../setup')
 								city_code:city_code,
 								address:address,
 								hashed_password: hash,
-								vehicle:{image : image,no_plat:no_plat},
+								data_user_requirement : {user_photo : user_photo , ktp_photo : ktp_photo},
+								vehicle:{image_kendaraan : image, no_plat:no_plat},
 								created_at: new Date().toISOString(),
 							});
 							newUser.save()
