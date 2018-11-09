@@ -55,6 +55,11 @@ const requestResponse = {
         rc: '5000',
         rm: 'Server tidak merespon, silahkan hubungi call center untuk info lebih lanjut'
     },
+    token_invalid: {
+      success: false,
+      rc: '0030',
+      rm: 'Akses ditolak! Sesi Anda telah berakhir atau tidak valid'
+    },
     email_already_use: {
           success: false,
           rc: '0011',

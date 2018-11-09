@@ -6,7 +6,7 @@
 
     "database": {
         "development": {
-            "uri": "mongodb://adi:adi@167.205.7.227:27017/SVA"
+            "uri": "mongodb://jancok:12345@192.168.100.15:27017/Royal"
         },
         "production": {
             "uri": "mongodb://localhost:27017/Royal"

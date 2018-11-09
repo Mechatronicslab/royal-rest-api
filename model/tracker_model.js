@@ -6,9 +6,10 @@ require('mongoose-double')(mongoose);
 var SchemaTypes = mongoose.Schema.Types;
 const trackerSchema = mongoose.Schema({
 	email			: {type: String, unique: true},
-	distance : Number,
-  speed : Number,
-	created_at		: {type: String, default: moment().format()},
+	trip			: [{distance: Number,
+									time	:	String,
+								}],
+
 });
 
 //mongoose.Promise = global.Promise;
